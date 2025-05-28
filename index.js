@@ -2,6 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+if (!process.env.MONGO_URI || !process.env.JWT_SECRET) {
+  console.error("❌ Missing essential environment variables!");
+  process.exit(1);
+}
+
 const app = express();
 
 // ✅ Middleware to parse JSON
